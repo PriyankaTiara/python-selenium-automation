@@ -1,0 +1,38 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from time import sleep
+
+# get the path to the ChromeDriver executable
+driver_path = ChromeDriverManager().install()
+
+# create a new Chrome browser instance
+service = Service(driver_path)
+driver = webdriver.Chrome(service=service)
+driver.maximize_window()
+
+# open the url
+driver.get('https://www.amazon.com/')
+#By id-- Amazon logo
+driver.find_element(By.ID,id="nav-logo-sprites")
+
+#By xpath--Email field
+driver.find_element(By.XPATH, "//input[@type='email']")
+
+#By xpath--Continue button
+driver.find_element(By.XPATH, "//input[@type='submit']")
+
+#BY id --Conditions of use
+driver.find_element(By.ID, id='legalTextRow')
+
+#By Xpath --need help
+driver.find_element(By.XPATH, "//span[@class='a-expander-prompt']")
+
+#By id--Forgot passward & Oter issues with Sign in & create your Amazon ID
+driver.find_element(By.ID,id='auth-fpp-link-bottom')
+driver.find_element(By.ID,id='ap-other-signin-issues-link')
+driver.find_element(By.ID,id='createAccountSubmit')
+
+
+
